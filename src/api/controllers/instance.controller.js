@@ -116,7 +116,7 @@ exports.delete = async (req, res) => {
 exports.list = async (req, res) => {
     if (req.query.active) {
         let instance = []
-        const db = mongoClient.db('whatsapp-api')
+        const db = mongoClient.db('atendezap01')
         const result = await db.listCollections().toArray()
         result.forEach((collection) => {
             instance.push(collection.name)
@@ -133,7 +133,7 @@ exports.list = async (req, res) => {
         WhatsAppInstances[key].getInstanceDetail(key)
     )
     let data = await Promise.all(instance)
-    
+
     return res.json({
         error: false,
         message: 'All instance listed',
