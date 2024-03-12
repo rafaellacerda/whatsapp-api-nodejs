@@ -55,4 +55,23 @@ process.on('SIGTERM', () => {
     }
 })
 
+const cron = require('cron')
+const https = require('https')
+
+const backendUrl = 'https://boot-whatsapp-v9mw.onrender.com/status'
+
+const job = new cron.CronJob('*/14 * * * *', () => {
+    console.log('restarting')
+
+    https
+        .get(backendUrl, (res) => {
+            if (res.statusCode === 200) console.log('restarted')
+            else console.error('failed')
+        })
+        .on('error', (err) => {
+            console.error('error')
+        })
+})
+
+job.start()
 module.exports = server
