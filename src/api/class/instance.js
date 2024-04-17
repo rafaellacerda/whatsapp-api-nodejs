@@ -518,7 +518,7 @@ class WhatsAppInstance {
                 templateButtons: processButton(data.buttons),
                 text: data.text ?? '',
                 footer: data.footerText ?? '',
-                viewOnce: true,
+                viewOnce: false,
             }
         )
         return result
