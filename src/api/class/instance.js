@@ -274,13 +274,13 @@ class WhatsAppInstance {
                 if (config.webhookBase64) {
                     switch (messageType) {
                         case 'imageMessage':
+                        case 'image':
                             const { buffer, base64 } = await downloadMessage(
                                 msg.message.imageMessage,
                                 'image'
                             )
                             webhookData['msgContent'] = buffer
                             webhookData['novoContent'] = base64
-
                             console.log('novoContent', novoContent)
                             break
                         case 'videoMessage':

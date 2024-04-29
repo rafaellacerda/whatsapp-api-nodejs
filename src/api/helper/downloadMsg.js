@@ -10,6 +10,8 @@ module.exports = async function downloadMessage(msg, msgType) {
             buffer = Buffer.concat([buffer, chunk])
         }
 
+        console.log('buffer', buffer)
+
         base64 = Buffer.from(buffer).toString('base64')
     } catch {
         return console.log('error downloading file-message')
