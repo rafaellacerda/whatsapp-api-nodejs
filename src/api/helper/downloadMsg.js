@@ -2,7 +2,7 @@ const { downloadContentFromMessage } = require('@whiskeysockets/baileys')
 
 module.exports = async function downloadMessage(msg, msgType) {
     let buffer = Buffer.from([])
-    let base64 = ''
+    // let base64 = ''
 
     try {
         const stream = await downloadContentFromMessage(msg, msgType)
@@ -10,11 +10,12 @@ module.exports = async function downloadMessage(msg, msgType) {
             buffer = Buffer.concat([buffer, chunk])
         }
 
-        console.log('buffer', buffer)
+        // console.log('buffer', buffer)
 
-        base64 = Buffer.from(buffer).toString('base64')
+        // base64 = Buffer.from(buffer).toString('base64')
     } catch {
         return console.log('error downloading file-message')
     }
-    return { buffer: buffer.toString('base64'), base64 }
+
+    return buffer.toString('base64')
 }
