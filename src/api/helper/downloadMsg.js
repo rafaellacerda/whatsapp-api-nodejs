@@ -12,5 +12,6 @@ module.exports = async function downloadMessage(msg, msgType) {
         return console.log('error downloading file-message')
     }
 
+    // console.log('base64', buffer)
     return buffer.toString('base64')
 }
